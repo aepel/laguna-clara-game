@@ -1,0 +1,39 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "static",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "8765"
+      ],
+      "port": 8765
+    },
+    {
+      "name": "laguna",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "8766"
+      ],
+      "port": 8766,
+      "autoPort": false
+    },
+    {
+      "name": "mobile",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "8767",
+        "-d",
+        "mobile/www"
+      ],
+      "port": 8767,
+      "autoPort": false
+    }
+  ]
+}

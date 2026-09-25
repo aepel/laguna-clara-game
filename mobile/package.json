@@ -1,0 +1,23 @@
+{
+  "name": "laguna-clara-mobile",
+  "version": "2.0.0",
+  "description": "Laguna Clara para iPhone y Android: el mismo juego envuelto con Capacitor y controles táctiles.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "sync": "npm run build && cap sync",
+    "ios": "npm run sync && cap open ios",
+    "android": "npm run sync && cap open android",
+    "dev": "node scripts/build.mjs && python3 -m http.server 8767 -d www"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.5.2",
+    "@capacitor/core": "^8.5.2",
+    "@capacitor/ios": "^8.5.2"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.5.2",
+    "esbuild": "^0.24.0"
+  }
+}

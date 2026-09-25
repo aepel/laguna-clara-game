@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#04121f">
+  <title>Laguna Clara</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; overflow: hidden; }
+    body {
+      background: #04121f;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      touch-action: none;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-touch-callout: none;
+      -webkit-tap-highlight-color: transparent;
+      overscroll-behavior: none;
+    }
+    #game { display: block; }
+
+    #pad {
+      position: fixed; inset: 0;
+      pointer-events: none;
+      font-family: ui-rounded, system-ui, sans-serif;
+      --gap: 18px;
+    }
+    #pad.hidden .play { display: none; }
+    #pad > * { pointer-events: auto; position: absolute; }
+
+    #stick {
+      left: calc(env(safe-area-inset-left) + var(--gap));
+      bottom: calc(env(safe-area-inset-bottom) + var(--gap));
+      width: 132px; height: 132px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(234,246,255,0.10), rgba(234,246,255,0.03) 70%);
+      border: 2px solid rgba(234,246,255,0.28);
+      opacity: 0.55;
+      transition: opacity 0.15s;
+    }
+    #knob {
+      position: absolute; left: 50%; top: 50%;
+      width: 58px; height: 58px; margin: -29px 0 0 -29px; border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, #c9fff0, #7ee8c8 55%, #3aa98a);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+    }
+    #stick.on { opacity: 0.9; }
+
+    .btn {
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: #eaf6ff; font-weight: 800; font-size: 13px; letter-spacing: 0.02em;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+      opacity: 0.4;
+      transition: opacity 0.15s, transform 0.08s;
+    }
+    .btn.on { transform: scale(0.92); opacity: 0.85; }
+    #jump {
+      right: calc(env(safe-area-inset-right) + var(--gap));
+      bottom: calc(env(safe-area-inset-bottom) + var(--gap) + 70px);
+      width: 74px; height: 74px;
+      background: radial-gradient(circle at 35% 30%, #ffd0e4, #ff9ec0 55%, #d9658f);
+    }
+    #fire {
+      right: calc(env(safe-area-inset-right) + var(--gap) + 84px);
+      bottom: calc(env(safe-area-inset-bottom) + var(--gap));
+      width: 84px; height: 84px;
+      background: radial-gradient(circle at 35% 30%, rgba(255,255,255,0.9), rgba(160,220,255,0.55) 45%, rgba(80,160,220,0.35));
+      border: 2px solid rgba(255,255,255,0.6);
+    }
+
+    .mini {
+      top: calc(env(safe-area-inset-top) + 10px);
+      width: 40px; height: 40px; border-radius: 12px;
+      background: rgba(4,18,31,0.35); border: 1px solid rgba(234,246,255,0.2);
+      opacity: 0.6;
+      color: #eaf6ff; font-size: 16px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    #pause { right: calc(env(safe-area-inset-right) + 10px); }
+    #mute { right: calc(env(safe-area-inset-right) + 58px); }
+    #fx { right: calc(env(safe-area-inset-right) + 106px); font-size: 12px; font-weight: 800; }
+    .mini.off { text-decoration: line-through; opacity: 0.35; }
+    #lang { left: calc(env(safe-area-inset-left) + 10px); font-size: 12px; font-weight: 800; display: none; }
+    #pad.titled #lang { display: flex; }
+  </style>
+</head>
+<body>
+  <canvas id="game" width="1344" height="672"></canvas>
+  <div id="pad" class="hidden">
+    <div id="stick" class="play"><div id="knob"></div></div>
+    <div id="jump" class="btn play">Saltar</div>
+    <div id="fire" class="btn play">Burbuja</div>
+    <div id="lang" class="mini">EN</div>
+    <div id="fx" class="mini">FX</div>
+    <div id="mute" class="mini">♪</div>
+    <div id="pause" class="mini play">❚❚</div>
+  </div>
+  <script src="game.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "appId": "com.lagunaclara.app",
+  "appName": "Laguna Clara",
+  "webDir": "www",
+  "backgroundColor": "#04121f",
+  "ios": {
+    "contentInset": "never",
+    "scrollEnabled": false
+  },
+  "android": {
+    "backgroundColor": "#04121f"
+  }
+}
